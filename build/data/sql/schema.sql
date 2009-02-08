@@ -1,0 +1,14 @@
+CREATE TABLE releases (id BIGINT AUTO_INCREMENT, title VARCHAR(64), artistid BIGINT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE track_tags (trackid BIGINT, tagid BIGINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(trackid, tagid)) ENGINE = INNODB;
+CREATE TABLE accounts (id INT UNSIGNED AUTO_INCREMENT, username CHAR(16) NOT NULL, password CHAR(32) NOT NULL, emailaddress CHAR(64) NOT NULL, enabled TINYINT(1) DEFAULT '1' NOT NULL, confirmed TINYINT(1) DEFAULT '0' NOT NULL, type VARCHAR(255), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE track_files (id BIGINT AUTO_INCREMENT, filename VARCHAR(64), trackid BIGINT NOT NULL, mimetype VARCHAR(20), purchasable TINYINT(1) DEFAULT '0' NOT NULL, active TINYINT(1) DEFAULT '1' NOT NULL, enabled TINYINT(1) DEFAULT '1' NOT NULL, size BIGINT, s3uri VARCHAR(128), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE tags (id INT UNSIGNED AUTO_INCREMENT, name CHAR(32), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE accounts_logins (id BIGINT UNSIGNED AUTO_INCREMENT, accountid INT UNSIGNED NOT NULL, ip INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX accountid_idx (accountid), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE tracks (id BIGINT AUTO_INCREMENT, title VARCHAR(64), artistid BIGINT NOT NULL, releaseid BIGINT NOT NULL, active TINYINT(1) DEFAULT '0' NOT NULL, enabled TINYINT(1) DEFAULT '1' NOT NULL, single TINYINT(1) DEFAULT '0' NOT NULL, originalfileid BIGINT, publishdate DATETIME, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX artistid_idx (artistid), INDEX releaseid_idx (releaseid), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE account_confirms (emailaddress CHAR(64), code CHAR(8), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(emailaddress)) ENGINE = INNODB;
+ALTER TABLE track_tags ADD CONSTRAINT track_tags_trackid_tracks_id FOREIGN KEY (trackid) REFERENCES tracks(id);
+ALTER TABLE track_tags ADD CONSTRAINT track_tags_tagid_tags_id FOREIGN KEY (tagid) REFERENCES tags(id);
+ALTER TABLE accounts_logins ADD CONSTRAINT accounts_logins_accountid_accounts_id FOREIGN KEY (accountid) REFERENCES accounts(id);
+ALTER TABLE tracks ADD CONSTRAINT tracks_releaseid_releases_id FOREIGN KEY (releaseid) REFERENCES releases(id);
+ALTER TABLE tracks ADD CONSTRAINT tracks_artistid_accounts_id FOREIGN KEY (artistid) REFERENCES accounts(id);
+ALTER TABLE account_confirms ADD CONSTRAINT account_confirms_emailaddress_accounts_emailaddress FOREIGN KEY (emailaddress) REFERENCES accounts(emailaddress);

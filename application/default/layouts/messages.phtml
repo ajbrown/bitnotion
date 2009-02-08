@@ -1,0 +1,8 @@
+<?php if ( isset( $this->messages ) ) : ?>
+<?php if ( !is_array( $this->messages ) ) $this->messages = array( $this->messages ); ?>
+<ul class="messages">
+    <?php foreach ( $this->messages as $message ) : ?><li>
+    <li><?php echo $message; ?></li>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>

@@ -1,0 +1,223 @@
+2009-02-03T09:22:07+00:00 INFO (6): -- begin processing tracks --
+2009-02-03T09:22:08+00:00 INFO (6): - processing track
+2009-02-03T09:22:08+00:00 ERR (3): error: no source file to process
+2009-02-03T09:22:08+00:00 INFO (6): - processing track
+2009-02-03T09:22:08+00:00 ERR (3): error: no source file to process
+2009-02-03T09:22:08+00:00 INFO (6): - processing track
+2009-02-03T09:22:08+00:00 INFO (6): - processing track
+2009-02-03T09:26:43+00:00 INFO (6): 483 [%track%] -- begin processing tracks --2009-02-03T09:26:44+00:00 INFO (6): 483 [1] - processing track2009-02-03T09:26:44+00:00 ERR (3): 483 [1] error: no source file to process2009-02-03T09:26:44+00:00 INFO (6): 483 [2] - processing track2009-02-03T09:26:44+00:00 ERR (3): 483 [2] error: no source file to process2009-02-03T09:26:44+00:00 INFO (6): 483 [3] - processing track2009-02-03T09:26:46+00:00 INFO (6): 483 [3] s3 upload successful, original file2009-02-03T09:26:46+00:00 DEBUG (7): 483 [3] attempting to create preview file2009-02-03T09:26:46+00:00 ERR (3): 483 [3] error: lame returned status Array2009-02-03T09:26:46+00:00 INFO (6): 483 [4] - processing track2009-02-03T09:26:48+00:00 INFO (6): 483 [4] s3 upload successful, original file2009-02-03T09:26:48+00:00 DEBUG (7): 483 [4] attempting to create preview file2009-02-03T09:26:48+00:00 ERR (3): 483 [4] error: lame returned status Array2009-02-03T09:28:48+00:00 INFO (6): 925 [%track%] -- begin processing tracks --
+2009-02-03T09:29:27+00:00 INFO (6): 890 [%track%] -- begin processing tracks --
+2009-02-03T09:29:27+00:00 INFO (6): 890 [1] - processing track
+2009-02-03T09:29:27+00:00 ERR (3): 890 [1] error: no source file to process
+2009-02-03T09:29:27+00:00 INFO (6): 890 [2] - processing track
+2009-02-03T09:29:27+00:00 ERR (3): 890 [2] error: no source file to process
+2009-02-03T09:29:27+00:00 INFO (6): 890 [3] - processing track
+2009-02-03T09:29:29+00:00 INFO (6): 890 [3] s3 upload successful, original file
+2009-02-03T09:29:29+00:00 DEBUG (7): 890 [3] attempting to create preview file
+2009-02-03T09:29:29+00:00 ERR (3): 890 [3] error: lame returned status Array
+2009-02-03T09:29:29+00:00 INFO (6): 890 [4] - processing track
+2009-02-03T09:29:32+00:00 INFO (6): 890 [4] s3 upload successful, original file
+2009-02-03T09:29:32+00:00 DEBUG (7): 890 [4] attempting to create preview file
+2009-02-03T09:29:32+00:00 ERR (3): 890 [4] error: lame returned status Array
+2009-02-03T09:31:09+00:00 INFO (6): 833 [%track%] -- begin processing tracks --
+2009-02-03T09:31:09+00:00 INFO (6): 833 [1] - processing track
+2009-02-03T09:31:09+00:00 ERR (3): 833 [1] error: no source file to process
+2009-02-03T09:31:09+00:00 INFO (6): 833 [2] - processing track
+2009-02-03T09:31:09+00:00 ERR (3): 833 [2] error: no source file to process
+2009-02-03T09:31:09+00:00 INFO (6): 833 [3] - processing track
+2009-02-03T09:31:12+00:00 INFO (6): 833 [3] s3 upload successful, original file
+2009-02-03T09:31:12+00:00 DEBUG (7): 833 [3] attempting to create preview file
+2009-02-03T09:31:12+00:00 ERR (3): 833 [3] error: lame returned status Array
+2009-02-03T09:31:12+00:00 INFO (6): 833 [4] - processing track
+2009-02-03T09:31:14+00:00 INFO (6): 833 [4] s3 upload successful, original file
+2009-02-03T09:31:14+00:00 DEBUG (7): 833 [4] attempting to create preview file
+2009-02-03T09:31:14+00:00 ERR (3): 833 [4] error: lame returned status Array
+2009-02-03T09:31:46+00:00 INFO (6): 789 [%track%] -- begin processing tracks --
+2009-02-03T09:31:46+00:00 INFO (6): 789 [1] - processing track
+2009-02-03T09:31:46+00:00 ERR (3): 789 [1] error: no source file to process
+2009-02-03T09:31:46+00:00 INFO (6): 789 [2] - processing track
+2009-02-03T09:31:46+00:00 ERR (3): 789 [2] error: no source file to process
+2009-02-03T09:31:46+00:00 INFO (6): 789 [3] - processing track
+2009-02-03T09:31:48+00:00 INFO (6): 789 [3] s3 upload successful, original file
+2009-02-03T09:31:48+00:00 DEBUG (7): 789 [3] attempting to create preview file
+2009-02-03T09:31:48+00:00 ERR (3): 789 [3] error: lame returned status 
+2009-02-03T09:31:48+00:00 INFO (6): 789 [4] - processing track
+2009-02-03T09:31:51+00:00 INFO (6): 789 [4] s3 upload successful, original file
+2009-02-03T09:31:51+00:00 DEBUG (7): 789 [4] attempting to create preview file
+2009-02-03T09:31:51+00:00 ERR (3): 789 [4] error: lame returned status 
+2009-02-03T09:33:18+00:00 INFO (6): 206 [%track%] -- begin processing tracks --
+2009-02-03T09:33:18+00:00 INFO (6): 206 [1] - processing track
+2009-02-03T09:33:18+00:00 ERR (3): 206 [1] error: no source file to process
+2009-02-03T09:33:18+00:00 INFO (6): 206 [2] - processing track
+2009-02-03T09:33:18+00:00 ERR (3): 206 [2] error: no source file to process
+2009-02-03T09:33:18+00:00 INFO (6): 206 [3] - processing track
+2009-02-03T09:33:21+00:00 INFO (6): 206 [3] s3 upload successful, original file
+2009-02-03T09:33:21+00:00 DEBUG (7): 206 [3] attempting to create preview file
+2009-02-03T09:33:21+00:00 ERR (3): 206 [3] error: lame returned status 
+2009-02-03T09:33:21+00:00 INFO (6): 206 [4] - processing track
+2009-02-03T09:33:23+00:00 INFO (6): 206 [4] s3 upload successful, original file
+2009-02-03T09:33:23+00:00 DEBUG (7): 206 [4] attempting to create preview file
+2009-02-03T09:33:23+00:00 ERR (3): 206 [4] error: lame returned status 
+2009-02-03T09:34:02+00:00 INFO (6): 368 [%track%] -- begin processing tracks --
+2009-02-03T09:34:02+00:00 INFO (6): 368 [1] - processing track
+2009-02-03T09:34:02+00:00 ERR (3): 368 [1] error: no source file to process
+2009-02-03T09:34:02+00:00 INFO (6): 368 [2] - processing track
+2009-02-03T09:34:02+00:00 ERR (3): 368 [2] error: no source file to process
+2009-02-03T09:34:02+00:00 INFO (6): 368 [3] - processing track
+2009-02-03T09:34:04+00:00 INFO (6): 368 [3] s3 upload successful, original file
+2009-02-03T09:34:04+00:00 DEBUG (7): 368 [3] attempting to create preview file
+2009-02-03T09:34:28+00:00 INFO (6): 984 [%track%] -- begin processing tracks --
+2009-02-03T09:34:28+00:00 INFO (6): 984 [4] - processing track
+2009-02-03T09:34:31+00:00 INFO (6): 984 [4] s3 upload successful, original file
+2009-02-03T09:34:31+00:00 DEBUG (7): 984 [4] attempting to create preview file
+2009-02-03T09:35:12+00:00 INFO (6): 130 [%track%] -- begin processing tracks --
+2009-02-03T09:35:19+00:00 INFO (6): 460 [%track%] -- begin processing tracks --
+2009-02-03T09:35:19+00:00 INFO (6): 460 [1] - processing track
+2009-02-03T09:35:19+00:00 ERR (3): 460 [1] error: no source file to process
+2009-02-03T09:35:19+00:00 INFO (6): 460 [2] - processing track
+2009-02-03T09:35:19+00:00 ERR (3): 460 [2] error: no source file to process
+2009-02-03T09:35:19+00:00 INFO (6): 460 [3] - processing track
+2009-02-03T09:35:22+00:00 INFO (6): 460 [3] s3 upload successful, original file
+2009-02-03T09:35:22+00:00 DEBUG (7): 460 [3] attempting to create preview file
+2009-02-03T09:35:46+00:00 INFO (6): 141 [%track%] -- begin processing tracks --
+2009-02-03T09:35:46+00:00 INFO (6): 141 [4] - processing track
+2009-02-03T09:35:48+00:00 INFO (6): 141 [4] s3 upload successful, original file
+2009-02-03T09:35:48+00:00 DEBUG (7): 141 [4] attempting to create preview file
+2009-02-03T09:36:13+00:00 INFO (6): 822 [%track%] -- begin processing tracks --
+2009-02-03T09:36:18+00:00 INFO (6): 650 [%track%] -- begin processing tracks --
+2009-02-03T09:36:18+00:00 INFO (6): 650 [1] - processing track
+2009-02-03T09:36:18+00:00 ERR (3): 650 [1] error: no source file to process
+2009-02-03T09:36:18+00:00 INFO (6): 650 [2] - processing track
+2009-02-03T09:36:18+00:00 ERR (3): 650 [2] error: no source file to process
+2009-02-03T09:36:18+00:00 INFO (6): 650 [3] - processing track
+2009-02-03T09:36:20+00:00 INFO (6): 650 [3] s3 upload successful, original file
+2009-02-03T09:36:20+00:00 DEBUG (7): 650 [3] attempting to create preview file
+2009-02-03T09:37:25+00:00 INFO (6): 923 [%track%] -- begin processing tracks --
+2009-02-03T09:37:25+00:00 INFO (6): 923 [4] - processing track
+2009-02-03T09:37:27+00:00 INFO (6): 923 [4] s3 upload successful, original file
+2009-02-03T09:37:27+00:00 DEBUG (7): 923 [4] attempting to create preview file
+2009-02-03T09:38:00+00:00 INFO (6): 454 [%track%] -- begin processing tracks --
+2009-02-03T09:38:00+00:00 INFO (6): 454 [1] - processing track
+2009-02-03T09:38:00+00:00 ERR (3): 454 [1] error: no source file to process
+2009-02-03T09:38:00+00:00 INFO (6): 454 [2] - processing track
+2009-02-03T09:38:00+00:00 ERR (3): 454 [2] error: no source file to process
+2009-02-03T09:38:00+00:00 INFO (6): 454 [3] - processing track
+2009-02-03T09:38:02+00:00 INFO (6): 454 [3] s3 upload successful, original file
+2009-02-03T09:38:02+00:00 DEBUG (7): 454 [3] attempting to create preview file
+2009-02-03T09:38:13+00:00 INFO (6): 635 [%track%] -- begin processing tracks --
+2009-02-03T09:38:13+00:00 INFO (6): 635 [1] - processing track
+2009-02-03T09:38:13+00:00 ERR (3): 635 [1] error: no source file to process
+2009-02-03T09:38:13+00:00 INFO (6): 635 [2] - processing track
+2009-02-03T09:38:13+00:00 ERR (3): 635 [2] error: no source file to process
+2009-02-03T09:38:13+00:00 INFO (6): 635 [3] - processing track
+2009-02-03T09:38:15+00:00 INFO (6): 635 [3] s3 upload successful, original file
+2009-02-03T09:38:15+00:00 DEBUG (7): 635 [3] attempting to create preview file
+2009-02-03T09:38:32+00:00 INFO (6): 381 [%track%] -- begin processing tracks --
+2009-02-03T09:38:32+00:00 INFO (6): 381 [1] - processing track
+2009-02-03T09:38:32+00:00 ERR (3): 381 [1] error: no source file to process
+2009-02-03T09:38:32+00:00 INFO (6): 381 [2] - processing track
+2009-02-03T09:38:32+00:00 ERR (3): 381 [2] error: no source file to process
+2009-02-03T09:38:32+00:00 INFO (6): 381 [3] - processing track
+2009-02-03T09:38:34+00:00 INFO (6): 381 [3] s3 upload successful, original file
+2009-02-03T09:38:34+00:00 DEBUG (7): 381 [3] attempting to create preview file
+2009-02-03T09:38:34+00:00 ERR (3): 381 [3] error: lame returned status 
+2009-02-03T09:38:34+00:00 INFO (6): 381 [4] - processing track
+2009-02-03T09:38:37+00:00 INFO (6): 381 [4] s3 upload successful, original file
+2009-02-03T09:38:37+00:00 DEBUG (7): 381 [4] attempting to create preview file
+2009-02-03T09:38:37+00:00 ERR (3): 381 [4] error: lame returned status 
+2009-02-03T09:41:14+00:00 INFO (6): 851 [%track%] -- begin processing tracks --
+2009-02-03T09:41:14+00:00 INFO (6): 851 [1] - processing track
+2009-02-03T09:41:14+00:00 ERR (3): 851 [1] error: no source file to process
+2009-02-03T09:41:14+00:00 INFO (6): 851 [2] - processing track
+2009-02-03T09:41:14+00:00 ERR (3): 851 [2] error: no source file to process
+2009-02-03T09:41:14+00:00 INFO (6): 851 [3] - processing track
+2009-02-03T09:41:16+00:00 INFO (6): 851 [3] s3 upload successful, original file
+2009-02-03T09:41:16+00:00 DEBUG (7): 851 [3] attempting to create preview file
+2009-02-03T09:41:16+00:00 ERR (3): 851 [3] error: lame returned status 
+2009-02-03T09:41:16+00:00 INFO (6): 851 [4] - processing track
+2009-02-03T09:41:19+00:00 INFO (6): 851 [4] s3 upload successful, original file
+2009-02-03T09:41:19+00:00 DEBUG (7): 851 [4] attempting to create preview file
+2009-02-03T09:41:19+00:00 ERR (3): 851 [4] error: lame returned status 
+2009-02-03T09:42:10+00:00 INFO (6): 719 [%track%] -- begin processing tracks --
+2009-02-03T09:42:10+00:00 INFO (6): 719 [1] - processing track
+2009-02-03T09:42:10+00:00 ERR (3): 719 [1] error: no source file to process
+2009-02-03T09:42:10+00:00 INFO (6): 719 [2] - processing track
+2009-02-03T09:42:10+00:00 ERR (3): 719 [2] error: no source file to process
+2009-02-03T09:42:10+00:00 INFO (6): 719 [3] - processing track
+2009-02-03T09:42:12+00:00 INFO (6): 719 [3] s3 upload successful, original file
+2009-02-03T09:42:12+00:00 DEBUG (7): 719 [3] attempting to create preview file
+2009-02-03T09:42:13+00:00 ERR (3): 719 [3] error: lame returned status ReplayGain: +2.6dB
+2009-02-03T09:42:13+00:00 INFO (6): 719 [4] - processing track
+2009-02-03T09:42:15+00:00 INFO (6): 719 [4] s3 upload successful, original file
+2009-02-03T09:42:15+00:00 DEBUG (7): 719 [4] attempting to create preview file
+2009-02-03T09:42:15+00:00 ERR (3): 719 [4] error: lame returned status ReplayGain: +2.6dB
+2009-02-03T09:43:51+00:00 INFO (6): 287 [%track%] -- begin processing tracks --
+2009-02-03T09:43:51+00:00 INFO (6): 287 [1] - processing track
+2009-02-03T09:43:51+00:00 ERR (3): 287 [1] error: no source file to process
+2009-02-03T09:43:51+00:00 INFO (6): 287 [2] - processing track
+2009-02-03T09:43:51+00:00 ERR (3): 287 [2] error: no source file to process
+2009-02-03T09:43:51+00:00 INFO (6): 287 [3] - processing track
+2009-02-03T09:43:54+00:00 INFO (6): 287 [3] s3 upload successful, original file
+2009-02-03T09:43:54+00:00 DEBUG (7): 287 [3] attempting to create preview file
+2009-02-03T09:43:54+00:00 ERR (3): 287 [3] error: lame returned status 0
+2009-02-03T09:43:54+00:00 INFO (6): 287 [4] - processing track
+2009-02-03T09:43:56+00:00 INFO (6): 287 [4] s3 upload successful, original file
+2009-02-03T09:43:56+00:00 DEBUG (7): 287 [4] attempting to create preview file
+2009-02-03T09:43:56+00:00 ERR (3): 287 [4] error: lame returned status 0
+2009-02-03T09:44:42+00:00 INFO (6): 771 [%track%] -- begin processing tracks --
+2009-02-03T09:44:42+00:00 INFO (6): 771 [1] - processing track
+2009-02-03T09:44:42+00:00 ERR (3): 771 [1] error: no source file to process
+2009-02-03T09:44:42+00:00 INFO (6): 771 [2] - processing track
+2009-02-03T09:44:42+00:00 ERR (3): 771 [2] error: no source file to process
+2009-02-03T09:44:42+00:00 INFO (6): 771 [3] - processing track
+2009-02-03T09:44:44+00:00 INFO (6): 771 [3] s3 upload successful, original file
+2009-02-03T09:44:44+00:00 DEBUG (7): 771 [3] attempting to create preview file
+2009-02-03T09:44:44+00:00 DEBUG (7): 771 [3] attempting to upload preview file
+2009-02-03T09:44:47+00:00 INFO (6): 771 [3] finished processing track
+2009-02-03T09:44:47+00:00 INFO (6): 771 [4] - processing track
+2009-02-03T09:44:49+00:00 INFO (6): 771 [4] s3 upload successful, original file
+2009-02-03T09:44:49+00:00 DEBUG (7): 771 [4] attempting to create preview file
+2009-02-03T09:44:49+00:00 DEBUG (7): 771 [4] attempting to upload preview file
+2009-02-03T09:44:51+00:00 INFO (6): 771 [4] finished processing track
+2009-02-03T09:45:23+00:00 INFO (6): 355 [%track%] -- begin processing tracks --
+2009-02-03T09:45:23+00:00 INFO (6): 355 [1] - processing track
+2009-02-03T09:45:23+00:00 ERR (3): 355 [1] error: no source file to process
+2009-02-03T09:45:23+00:00 INFO (6): 355 [2] - processing track
+2009-02-03T09:45:23+00:00 ERR (3): 355 [2] error: no source file to process
+2009-02-03T09:45:23+00:00 INFO (6): 355 [3] - processing track
+2009-02-03T09:45:25+00:00 INFO (6): 355 [3] s3 upload successful, original file
+2009-02-03T09:45:25+00:00 DEBUG (7): 355 [3] attempting to create preview file
+2009-02-03T09:45:25+00:00 ERR (3): 355 [3] error: lame returned status 1
+2009-02-03T09:45:25+00:00 INFO (6): 355 [4] - processing track
+2009-02-03T09:45:27+00:00 INFO (6): 355 [4] s3 upload successful, original file
+2009-02-03T09:45:27+00:00 DEBUG (7): 355 [4] attempting to create preview file
+2009-02-03T09:45:27+00:00 ERR (3): 355 [4] error: lame returned status 1
+2009-02-03T09:46:15+00:00 INFO (6): 336 [%track%] -- begin processing tracks --
+2009-02-03T09:46:24+00:00 INFO (6): 387 [%track%] -- begin processing tracks --
+2009-02-03T09:46:24+00:00 INFO (6): 387 [1] - processing track
+2009-02-03T09:46:24+00:00 ERR (3): 387 [1] error: no source file to process
+2009-02-03T09:46:24+00:00 INFO (6): 387 [2] - processing track
+2009-02-03T09:46:24+00:00 ERR (3): 387 [2] error: no source file to process
+2009-02-03T09:46:24+00:00 INFO (6): 387 [3] - processing track
+2009-02-03T09:46:26+00:00 INFO (6): 387 [3] s3 upload successful, original file
+2009-02-03T09:46:26+00:00 DEBUG (7): 387 [3] attempting to create preview file
+2009-02-03T09:46:26+00:00 ERR (3): 387 [3] error: lame returned status 0
+2009-02-03T09:46:26+00:00 INFO (6): 387 [4] - processing track
+2009-02-03T09:46:29+00:00 INFO (6): 387 [4] s3 upload successful, original file
+2009-02-03T09:46:29+00:00 DEBUG (7): 387 [4] attempting to create preview file
+2009-02-03T09:46:29+00:00 ERR (3): 387 [4] error: lame returned status 0
+2009-02-03T09:46:51+00:00 INFO (6): 289 [%track%] -- begin processing tracks --
+2009-02-03T09:46:52+00:00 INFO (6): 289 [1] - processing track
+2009-02-03T09:46:52+00:00 ERR (3): 289 [1] error: no source file to process
+2009-02-03T09:46:52+00:00 INFO (6): 289 [2] - processing track
+2009-02-03T09:46:52+00:00 ERR (3): 289 [2] error: no source file to process
+2009-02-03T09:46:52+00:00 INFO (6): 289 [3] - processing track
+2009-02-03T09:46:54+00:00 INFO (6): 289 [3] s3 upload successful, original file
+2009-02-03T09:46:54+00:00 DEBUG (7): 289 [3] attempting to create preview file
+2009-02-03T09:46:54+00:00 DEBUG (7): 289 [3] attempting to upload preview file
+2009-02-03T09:46:57+00:00 INFO (6): 289 [3] finished processing track
+2009-02-03T09:46:57+00:00 INFO (6): 289 [4] - processing track
+2009-02-03T09:46:59+00:00 INFO (6): 289 [4] s3 upload successful, original file
+2009-02-03T09:46:59+00:00 DEBUG (7): 289 [4] attempting to create preview file
+2009-02-03T09:46:59+00:00 DEBUG (7): 289 [4] attempting to upload preview file
+2009-02-03T09:47:01+00:00 INFO (6): 289 [4] finished processing track

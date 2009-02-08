@@ -1,0 +1,269 @@
+Account:
+  tableName: accounts
+  columns:
+    username:
+      type: string(16)
+      fixed: true
+      notnull: true
+    password:
+      type: string(32)
+      fixed: true
+      notnull: true
+    emailAddress:
+      type: string(64)
+      fixed: true
+      notnull: true
+    enabled:
+      default: 1
+      notnull: true
+      type: boolean(25)
+    confirmed:
+      default: 0
+      notnull: true
+      type: boolean
+  actAs: [Timestampable]
+  relations:
+    Login:
+      class: AccountLogin
+      local: id
+      foreign: accountId
+      type: many
+  indexes:
+    username_index:
+      fields: [username]
+      type: unique
+    email_index:
+      fields: [emailaddress]
+      
+AccountConfirm:
+  tableName: account_confirms
+  columns:
+    emailAddress:
+      type: string(64)
+      fixed: true
+      primary: true
+    code:
+      type: string(8)
+      fixed: true
+      notblank: true
+  actAs: [Timestampable]
+  relations:
+    Account:
+      local: emailAddress
+      foreign: emailAddress
+      type: one
+      
+AccountLogin:
+  tableName: accounts_logins
+  columns:
+    accountId:
+      type: integer
+      notnull: true
+      unsigned: false
+    ip: integer(4)
+  actAs: [Timestampable]
+  relations:
+    Account:
+      local: accountId
+      foreign: id
+      type: one
+
+Buyer:
+  inheritance:
+    extends: Account
+    type: column_aggregation
+    keyField: type
+    keyValue: 1
+    
+Seller:
+  inheritance:
+    extends: Account
+    type: column_aggregation
+    keyField: type
+    keyValue: 2
+
+Release:
+  tableName: releases
+  columns:
+    title:
+      notblank: true
+      type: string(64)
+    artistId:
+      notnull: true
+      type: integer
+    published:
+      type: boolean
+      notnull: true
+      default: true
+    publishDate:
+      type: timestamp
+      notnull: true
+  actAs:
+    Timestampable:
+    Sluggable:
+      unique: true
+      fields: [title,id]
+      uniqueBy: [title,id]
+      canUpdate: true
+  relations:
+    Track:
+      local: id
+      foreign: releaseId
+      type: many
+    Artist:
+      class: Artist
+      local: artistId
+      foreign: id
+      type: one
+      
+Track:
+  tableName: tracks
+  columns:
+    title:
+      notblank: true
+      type: string(64)
+    artistId:
+      notnull: true
+      type: integer(8)
+    releaseId:
+      notnull: true
+      type: integer(8)
+    published:
+      notnull: true
+      default: true
+      type: boolean
+    enabled:
+      default: 1
+      notnull: true
+      type: boolean
+    single:
+      default: 0
+      notnull: true
+      type: boolean(25)
+    encodingStatus:
+      default: UPLOADED
+      values: [UPLOADED,PROCESSING,ERROR,COMPLETE]
+      notnull: true
+      type: enum
+    originalFileId: integer(8)
+    previewFileId: integer(8)
+    purchaseFileId: integer(8)
+    publishDate: timestamp(25)
+  actAs: [Timestampable]
+  relations:
+    Artist:
+      class: Seller
+      local: artistId
+      foreign: id
+      type: one
+    Preview:
+      class: TrackFile
+      local: previewFileId
+      foreign: id
+      type: one
+    Original:
+      class: TrackFile
+      local: originalFileId
+      foreign: id
+      type: one
+    Purchasable:
+      class: TrackFile
+      local: purchaseFileId
+      foreign: id
+      type: one
+    Tag:
+      refClass: TrackTag
+      local: trackId
+      foreign: tagId
+      type: many
+      
+Artist:
+  tableName: artists
+  columns:
+    name:
+      type: string(64) 
+      notblank: true
+    website:
+       type: string(128)
+    myspace:
+      type: string(64)
+    accountId:
+      type: integer
+      notnull: true
+  actAs:
+    Timestampable:
+    Sluggable:
+      unique: true
+      fields: [name,id]
+      uniqueBy: [name,id]
+      canUpdate: true
+  relations:
+    Seller:
+      class: Seller
+      local: accountId
+      foreign: id
+      type: one
+    Release:
+      class: Release
+      local: id
+      foreign: artistId
+      
+TrackTag:
+  tableName: track_tags
+  columns:
+    trackId:
+      primary: true
+      type: integer
+    tagId:
+      primary: true
+      type: integer
+  actAs: [Timestampable]
+  relations:
+    Track:
+      local: trackId
+      foreign: id
+      type: one
+    Tag:
+      local: tagId
+      foreign: id
+      type: one
+
+TrackFile:
+  tableName: track_files
+  columns:
+    id:
+      type: integer(8)
+      autoincrement: true
+      primary: true
+    filename:
+      notblank: true
+      type: string(64)
+    trackId:
+      notnull: true
+      type: integer(8)
+    mimeType:
+      notblank: true
+      type: string(20)
+    purchasable:
+      notnull: true
+      default: 0
+      type: boolean(25)
+    active:
+      notnull: true
+      default: 1
+      type: boolean(25)
+    enabled:
+      notnull: true
+      default: 1
+      type: boolean(25)
+    size: integer(10)
+    s3uri: string(128)
+  actAs: [Timestampable]
+
+Tag:
+  tableName: tags
+  columns:
+    name:
+      type: string(32)
+      fixed: true
+  actAs: [Timestampable]

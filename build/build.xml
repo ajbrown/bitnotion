@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding=-"UTF-8"?>
+<project name="MainProject" default="dist" basedir=".">
+
+	<taskdef name="init-s3" classname="App.Task.InitS3" />
+
+	<target name="init-s3">
+		<echo msg="Initializing Amazon S3 Buckets" />
+		<echo msg="Production Bucket.." />
+		<InitS3 environment="prod.coppermine" />
+		<echo msg="Stage Bucket.." />
+		<InitS3 bucket="stage.coppermine" />
+		<echo msg="Development Bucket.." />
+		<InitS3 bucket="dev.coppermine" />
+	</target>
+
+
+</project>
+

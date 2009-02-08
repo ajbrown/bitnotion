@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * Default Layout
+ *
+ * @author
+ * @version
+ */
+
+echo '<?xml version="1.0" encoding="UTF-8" ?>';
+echo $this->doctype()
+?>
+
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<?php
+
+		$this->dojo()->enable();
+
+		echo $this->headTitle();
+	    echo $this->headScript();
+	    echo $this->headStyle();
+
+	    $this->dojo()
+	        ->enable()
+	        ->setDjConfigOption('parsOnLoad', true)
+	        ->setDjConfigOption( 'isDebug', false )
+	        ->addStylesheet( $this->dojo()->getCdnBase() . $this->dojo()->getCdnVersion() . "/dojo/resources/dojo.css" )
+	        ->addStylesheetModule('dijit.themes.tundra')
+	        ;
+	    echo $this->dojo();
+
+	    ?>
+	</head>
+
+	<body>
+
+	    <?php echo $this->render( 'messages.phtml' ); ?>
+		<h1><?php echo $this->placeholder('title'); ?></h1>
+		<?php echo $this->layout()->content; ?>
+
+		<br />
+		<br />
+	</body>
+
+</html>

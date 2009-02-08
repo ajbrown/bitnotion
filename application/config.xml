@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+<production>
+
+  <hostname>bitnotion.com</hostname>
+  <db>
+	<dsn>mysql://coppermine:coppermine!!3@localhost/coppermine</dsn>
+	<attributes>
+		<model_loading>conservative</model_loading>
+	</attributes>
+	<caching>
+		<enabled>1</enabled>
+		<options>
+		   <servers>
+			<host>localhost</host>
+			<port>11211</port>
+			<persistent>1</persistent>
+		   </servers>
+		   <compression>0</compression>
+		</options>
+	</caching>
+  </db>
+  
+  <aws>
+  	<accessKey>0ZWX8RRN1HS9ZEPC2W82</accessKey>
+  	<secretKey>w3xYnW1uTKlsTVeNvUJBokxfmVUSpVa+mkeIlDwJ</secretKey>
+  	<publicBucket>media.coppermine</publicBucket>
+  	<contentBucket>priv.coppermine</contentBucket>
+  </aws>
+  
+  <audio>
+  </audio>
+  
+  <injestion>
+    <workDir>/tmp/encoding/incoming</workDir>
+    <allowedExtensions>wav</allowedExtensions>
+    <allowedMimeTypes>audio/x-wav</allowedMimeTypes>
+    <filenameRegex><![CDATA[/[^a-z1-9\-_ ]/i]]></filenameRegex>
+    <samples>
+    	<vbr>5</vbr>
+    	<stereo>1</stereo>
+    </samples>
+    <purchasables>
+    	<bitrate>320</bitrate>
+    </purchasables>
+    <lameExec>/usr/bin/lame</lameExec>
+  </injestion>
+  
+	<routes>
+		<data>
+			<route>data/:controller/:action/:id</route>
+			<defaults>
+				<module>data</module>
+			</defaults>
+			<reqs>
+				<id value="\d+"/>
+			</reqs>
+		</data>
+		<confirmAccount>
+			<route>account/confirm/:email/:code</route>
+			<defaults>
+				<module>default</module>
+				<controller>account</controller>
+				<action>confirm</action>
+			</defaults>
+			<reqs>
+				<code value="\w+"/>
+			</reqs>
+		</confirmAccount>
+	</routes>
+  
+</production>
+
+<staging extends="production">
+
+  <hostname>stage.bitnotion.com</hostname>
+  <db>
+	<dsn>mysql://coppermine:coppermine!!3@localhost/coppermine</dsn>
+  </db>
+
+  <aws>
+  	<publicBucket>media.stage.coppermine</publicBucket>
+  	<contentBucket>priv.stage.coppermine</contentBucket>
+  </aws>
+</staging>
+
+<build extends="staging">
+
+  <hostname>build.bitnotion.com</hostname>
+  <db>
+	<attributes>
+		<model_loading>aggressive</model_loading>
+	</attributes>
+  </db>
+</build>
+
+<dev extends="staging">
+
+  <hostname>dev.bitnotion.com</hostname>
+  <aws>
+  	<publicBucket>media.dev.coppermine</publicBucket>
+  	<contentBucket>priv.dev.coppermine</contentBucket>
+  </aws>
+</dev>
+
+<test extends="staging">
+
+  <hostname>test.bitnotion.com</hostname>
+  <aws>
+  	<publicBucket>media.test.coppermine</publicBucket>
+  	<contentBucket>priv.test.coppermine</contentBucket>
+  </aws>
+  <db>
+	<dsn>mysql://coppermine:coppermine!!3@localhost/coppermine_test</dsn>
+  </db>
+</test>
+
+</config>

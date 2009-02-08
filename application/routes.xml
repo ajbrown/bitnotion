@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routesConfiguration>
+	<production>
+		
+	</production>
+	
+	<staging extends="production"></staging>
+	<build extends="staging"></build>
+	<dev extends="staging"></dev>
+	<test extends="staging"></test>
+</routesConfiguration>

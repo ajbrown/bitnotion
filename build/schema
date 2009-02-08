@@ -1,0 +1,303 @@
+Release:
+  tableName: releases
+  columns:
+    id:
+      type: integer(8)
+      autoincrement: true
+      primary: true
+    title:
+      notblank: true
+      type: string(64)
+    artistid:
+      notnull: true
+      type: integer(8)
+    created_at:
+      notnull: true
+      type: timestamp(25)
+    updated_at:
+      notnull: true
+      type: timestamp(25)
+  relations:
+    Track:
+      local: id
+      foreign: releaseId
+      type: many
+TrackTag:
+  tableName: track_tags
+  columns:
+    trackid:
+      primary: true
+      type: integer(10)
+    tagid:
+      primary: true
+      type: integer(10)
+    created_at:
+      notnull: true
+      type: timestamp(25)
+    updated_at:
+      notnull: true
+      type: timestamp(25)
+  relations:
+    Track:
+      local: trackId
+      foreign: id
+      type: one
+    Tag:
+      local: tagId
+      foreign: id
+      type: one
+Seller:
+  tableName: accounts
+  columns:
+    id:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    username:
+      type: string(16)
+      fixed: true
+      notnull: true
+    password:
+      type: string(32)
+      fixed: true
+      notnull: true
+    emailaddress:
+      type: string(64)
+      fixed: true
+      notnull: true
+    enabled:
+      default: 1
+      notnull: true
+      type: boolean(25)
+    confirmed:
+      default: 0
+      notnull: true
+      type: boolean(25)
+    created:
+      notnull: true
+      type: timestamp(25)
+    updated:
+      notnull: true
+      type: timestamp(25)
+  relations:
+    Login:
+      class: AccountLogin
+      local: id
+      foreign: accountId
+      type: many
+Account:
+  tableName: accounts
+  columns:
+    id:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    username:
+      type: string(16)
+      fixed: true
+      notnull: true
+    password:
+      type: string(32)
+      fixed: true
+      notnull: true
+    emailaddress:
+      type: string(64)
+      fixed: true
+      notnull: true
+    enabled:
+      default: 1
+      notnull: true
+      type: boolean(25)
+    confirmed:
+      default: 0
+      notnull: true
+      type: boolean(25)
+    created:
+      notnull: true
+      type: timestamp(25)
+    updated:
+      notnull: true
+      type: timestamp(25)
+  relations:
+    Login:
+      class: AccountLogin
+      local: id
+      foreign: accountId
+      type: many
+TrackFile:
+  tableName: track_files
+  columns:
+    id:
+      type: integer(8)
+      autoincrement: true
+      primary: true
+    filename:
+      notblank: true
+      type: string(64)
+    trackid:
+      notnull: true
+      type: integer(8)
+    mimetype:
+      notblank: true
+      type: string(20)
+    purchasable:
+      notnull: true
+      default: 0
+      type: boolean(25)
+    active:
+      notnull: true
+      default: 1
+      type: boolean(25)
+    enabled:
+      notnull: true
+      default: 1
+      type: boolean(25)
+    created_at:
+      notnull: true
+      type: timestamp(25)
+    updated_at:
+      notnull: true
+      type: timestamp(25)
+    size: integer(10)
+    s3uri: string(128)
+Tag:
+  tableName: tags
+  columns:
+    id:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    name:
+      type: string(32)
+      fixed: true
+    created_at:
+      notnull: true
+      type: timestamp(25)
+    updated_at:
+      notnull: true
+      type: timestamp(25)
+AccountLogin:
+  tableName: accounts_logins
+  columns:
+    id:
+      type: integer(8)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    accountid:
+      type: integer(4)
+      unsigned: 1
+      notnull: true
+    created:
+      notnull: true
+      type: timestamp(25)
+    updated:
+      notnull: true
+      type: timestamp(25)
+    ip: integer(4)
+  relations:
+    Account:
+      local: accountId
+      foreign: id
+      type: one
+Track:
+  tableName: tracks
+  columns:
+    id:
+      type: integer(8)
+      autoincrement: true
+      primary: true
+    title:
+      notblank: true
+      type: string(64)
+    artistid:
+      notnull: true
+      type: integer(8)
+    releaseid:
+      notnull: true
+      type: integer(8)
+    active:
+      notnull: true
+      default: 0
+      type: boolean(25)
+    enabled:
+      default: 1
+      notnull: true
+      type: boolean(25)
+    single:
+      default: 0
+      notnull: true
+      type: boolean(25)
+    originalfileid: integer(8)
+    publishdate: timestamp(25)
+  relations:
+    Artist:
+      class: Seller
+      local: artistId
+      foreign: id
+      type: one
+AccountConfirm:
+  tableName: account_confirms
+  columns:
+    emailaddress:
+      type: string(64)
+      fixed: true
+      primary: true
+    code:
+      type: string(8)
+      fixed: true
+      notblank: true
+    created:
+      notnull: true
+      type: timestamp(25)
+    updated:
+      notnull: true
+      type: timestamp(25)
+  relations:
+    Account:
+      local: emailAddress
+      foreign: emailAddress
+      type: one
+Buyer:
+  tableName: accounts
+  columns:
+    id:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    username:
+      type: string(16)
+      fixed: true
+      notnull: true
+    password:
+      type: string(32)
+      fixed: true
+      notnull: true
+    emailaddress:
+      type: string(64)
+      fixed: true
+      notnull: true
+    enabled:
+      default: 1
+      notnull: true
+      type: boolean(25)
+    confirmed:
+      default: 0
+      notnull: true
+      type: boolean(25)
+    created:
+      notnull: true
+      type: timestamp(25)
+    updated:
+      notnull: true
+      type: timestamp(25)
+  relations:
+    Login:
+      class: AccountLogin
+      local: id
+      foreign: accountId
+      type: many
