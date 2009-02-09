@@ -19,8 +19,6 @@ class App_Form_NewTrack extends Zend_Dojo_Form
 			'DijitForm',
 		) );
 
-		$this->setAttrib( 'class', 'tundra' );
-
 		$this->addElement( 'FilteringSelect', 'releaseId', array(
             'label'		    => 'Release',
 			'storeId'	    => 'artistReleasesDataStore',
@@ -28,7 +26,7 @@ class App_Form_NewTrack extends Zend_Dojo_Form
 		    'description'	=> 'The release to attach this track to.  The track will still be downloadable as a single track, but will be grouped under the release',
             'autocomplete'  => true,
 			'storeParams'   => array(
-				'url' => '/data/artists/releases/' . $userId,
+				'url' => '/data/artists/releases/' . $userId . '?published=0',
 		        'requestMethod' => 'get'
 		    ),
 			'dijitParams'   => array( 'searchAttr' => 'title' ),

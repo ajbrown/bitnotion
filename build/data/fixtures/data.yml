@@ -1,22 +1,60 @@
 Account: {  }
 Seller:
-  Seller_1:
+  ApprovedSeller_1:
     username: testSeller
     password: 5f4dcc3b5aa765d61d8327deb882cf99
-    emailaddres: test@bitnotion.com
+    emailaddres: testSeller@test.bitnotion.com
     enabled: true
     confirmed: true
-    type: '2'
-    created_at: '2009-02-07 07:54:00'
-    updated_at: '2009-02-07 07:54:00'
+    acceptSellerAgree: true
+    type: 2
+  UnacceptedSeller_1:
+    username: testSeller2
+    password: 5f4dcc3b5aa765d61d8327deb882cf99
+    emailaddres: testSeller2@test.bitnotion.com
+    enabled: true
+    confirmed: true
+    acceptSellerAgree: false
+    type: 2
+  UncofirmedSeller_1:
+    username: testSeller3
+    password: 5f4dcc3b5aa765d61d8327deb882cf99
+    emailaddres: testSeller3@test.bitnotion.com
+    enabled: true
+    confirmed: false
+    acceptSellerAgree: false
+    type: 2
+  DisabledSeller_1:
+    username: testSeller4
+    password: 5f4dcc3b5aa765d61d8327deb882cf99
+    emailaddres: testSeller4@test.bitnotion.com
+    enabled: false
+    confirmed: true
+    acceptSellerAgree: true
+    type: 2  
     
 Buyer:
-  Buyer_1:
+  ValidBuyer_1:
     username: testBuyer
     password: 5f4dcc3b5aa765d61d8327deb882cf99
-    emailaddres: test@bitnotion.com
+    emailaddres: testBuyer@test.bitnotion.com
     enabled: true
     confirmed: true
-    type: '1'
-    created_at: '2009-02-07 07:54:00'
-    updated_at: '2009-02-07 07:54:00'
+    type: 1
+    
+Artist:
+  Artist_1:
+    name: 'DJ Test Seller 1'
+    website: 'http://test.bitnotion.com/artists/dj-test-seller'
+    myspace: 'bitnotiontestseller'
+    Seller: ApprovedSeller_1
+  Artist_2:
+    name: 'DJ Test Seller 2'
+    website: 'http://test.bitnotion.com/artists/dj-test-seller'
+    myspace: 'bitnotiontestseller'
+    Seller: UnacceptedSeller_1
+  Artist_3:
+    name: 'DJ Test Seller 3'
+    website: 'http://test.bitnotion.com/artists/dj-test-seller'
+    myspace: 'bitnotiontestseller'
+    Seller: DisabledSeller_1

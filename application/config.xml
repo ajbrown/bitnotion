@@ -69,6 +69,13 @@
 			</reqs>
 		</confirmAccount>
 	</routes>
+	
+	<recaptcha>
+		<username>hypermuttlabs</username>
+		<password>hypermutt!@#</password>
+		<publicKey>6LdiCgUAAAAAAO5ffS8gINxZ4lv6cAuNLz41gTGT</publicKey>
+		<privateKey>6LdiCgUAAAAAAK4_IxT92MtiQFI8sIAXyRnWHKuu</privateKey>
+	</recaptcha>
   
 </production>
 

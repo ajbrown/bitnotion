@@ -64,7 +64,10 @@ class AccountController extends ZForge_Controller_Action
 				} else {
 
 				    $userdata = $adapter->getResultRowObject( null, 'password' );
-				    $auth->getStorage()->write( $userdata );
+
+				    //translate the user into an actual doctrine object
+				    $accounts = new App_Table_Account();
+				    $auth->getStorage()->write( $accounts->find( $userdata->id ) );
 
 				    //audit the login
 				    $login = new AccountLogin();
@@ -112,135 +115,86 @@ class AccountController extends ZForge_Controller_Action
 
 	public function logoutAction()
 	{
-
 		if ( Zend_Auth::getInstance()->getIdentity() ) {
 
 			Zend_Auth::getInstance()->clearIdentity();
 			$this->_flash->addMessage( 'You have been logged out.' );
 		}
-
 	}
 
 	public function registerAction()
 	{
-		$username = $this->_getParam( 'emailAddress' );
-		$regForm = new forms_RegisterForm();
 
-		if ( !empty( $username ) && $regForm->isValid( $_POST ) ) {
+		$form = new App_Form_Register();
 
-			$params = $this->_getAllParams();
-			$messages = array();
-			$valid = true;
+		if ( !empty( $_POST ) && $form->isValid( $_POST ) ) {
 
-			// make sure the username isn't taken
-			require_once 'models/handlers/AccountsHandler.php';
-			$accounts = new AccountsHandler( Doctrine_Manager::connection() );
-			$result = $accounts->findOneByEmailAddress( $params[ 'emailAddress' ] );
+		    if( $form->getValue( 'sellerAccount' )  ) {
+		        $account = new Seller();
+		    } else {
+		        $account = new Buyer();
+		    }
 
-			if ( false !== $result ) {
-				$messages[] = 'The username you specfied is already taken.';
-				$valid = false;
-			}
+			$account->username 	    = $form->getValue( 'emailAddress' );
+			$account->emailAddress  = $form->getValue( 'emailAddress' );
+			$account->password		= $form->getValue( 'password' );
+			$account->confirmed	    = false;
+			$account->save();
 
-			// password confirmation must be the same
-			if ( !$params['password'] == $params['passwordconfirm'] ) {
-				$messages[] = 'The passwords you entered did not match';
-				$valid = false;
-			}
+			// send the confirmation, and redirect to the confirm page
+			$this->_sendConfirmEmail( $account->emailAddress );
 
+			$msg = "A confirmation code has been set to "
+					. "<cite>{$account->emailAddress}</cite>.  Please check "
+					. "your enter the confirmation into the field below.";
 
-			if ( $valid ) {
-
-				// save the user
-
-			    $user =  $accounts->create();
-				$user->username 	= $params[ 'emailAddress' ];
-				$user->emailAddress = $params[ 'emailAddress' ];
-				$user->password		= md5( $params[ 'password' ] );
-				$user->confirmed	= false;
-				$user->save();
-
-
-				// send the confirmation, and redirect to the confirm page
-
-				$this->_sendConfirmEmail( $user->emailAddress );
-
-
-				$msg = "A confirmation code has been set to "
-						. "<cite>{$user->emailAddress}</cite>.  Please check "
-						. "your enter the confirmation into the field below.";
-
-				$this->_flash->addMessage( $msg );
-				$this->_redirect( '/account/confirm/' . $user->emailAddress );
-				return;
-
-			}
-
-			// add error messages to flash
-			foreach( $messages as $msg ) {
-					$this->_flash->addMessage( $msg );
-			}
+			$this->_flash->addMessage( $msg );
+			$this->_redirector->gotoSimple( 'confirm', null, null, array(
+			    'email' => $account->emailAddress
+			) );
 		}
 
-		$regForm->setMethod( 'post' );
-		$this->view->form = $regForm;
+		$form->setMethod( 'post' );
+		$this->view->form = $form;
 	}
 
 	public function confirmAction()
 	{
-		$code 	= $this->_getParam( 'code' );
-		$email	= $this->_getParam( 'email' );
-		$resend = $this->_getParam( 'resend' );
+		$code 	= $this->_request->getParam( 'code' );
+		$email	= $this->_request->getParam( 'email' );
 
-		$form   = new forms_ConfirmForm();
-		$form->setMethod( 'get' );
-		$form->setDefaults( array( 'email' => $email, 'code' => $code ) );
+		$form   = new App_Form_ConfirmRegister();
+		$form->setMethod( 'post' );
 
-		if( !empty( $resend ) && !empty( $email ) ) {
+		if( !empty( $_POST ) && $form->isValid( $_POST ) ) {
 
-			//------------------------------------------
-			// Resend email confirmation
-			//------------------------------------------
+		    $confirms = new App_Table_AccountConfirm();
+		    $code  = $form->getValue( 'code' );
+		    $email = $form->getValue( 'emailAddress' );
 
-			//make sure the supplied email address is registered and not confirmed
-			$accounts = new AccountsHandler();
-			$result = $accounts->findOneByEmailAddress( $email );
-			if( false !== $result ) {
+		    //------------------------------------------
+            // Attempt to confirm an email address
+            //-----------------------------------------
+            $confirm = $confirms->find( $email );
 
-				$this->_sendConfirmEmail( $email );
-				$this->_flash->addMessage( 'A confirmation code has been resent' );
+            if ( $confirm == false ) {
 
-			} else {
+                $form->getElement( 'emailAddress' )
+                    ->addError( 'This e-mail address is not pending confirmation' );
 
-				$this->_flash->addMessage(
-					'The email address you entered is not pending confirmation.'
-				);
-			}
-		} else if( !empty( $code ) ) {
+            } elseif( $code == $confirm->code ) {
 
-			//------------------------------------------
-			// Attempt to confirm an email address
-			//------------------------------------------
+                $confirm->Account->confirmed = true;
+                $confirm->Account->save();
+                $confirm->delete();
+                $this->_flash->addMessage( 'Your e-mail address has been confirmed.  You may now log in.' );
 
-			$confirmcodes = new AccountConfirmsHandler();
-
-			if( $confirmcodes->confirm( $email, $code ) ) {
-
-				$accounts = new AccountsHandler();
-				$accounts->confirmByEmail( $email );
-
-				$this->_flash->addMessage(
-					'Your email address has been confirmed.  You may now log in.'
-				);
-
-				$this->_redirector->gotoSimple( 'login' );
-			} else {
-
-				$this->_flash->addMessage(
-					'The confirmation code is incorrect for the email address '
-					. 'you provided.  Please try again.'
-				);
-			}
+                $this->_redirector->gotoSimple(
+                    'login' );
+            } else {
+                $form->getElement( 'code' )
+                    ->addError( 'The confirmation code is incorrect.' );
+            }
 		}
 
 		$this->view->form = $form;
@@ -248,25 +202,31 @@ class AccountController extends ZForge_Controller_Action
 		$this->view->assign( 'code', $code );
 	}
 
-	protected function _sendConfirmEmail( $emailaddress )
+	protected function _sendConfirmEmail( $emailAddress )
 	{
+	    $confirm = new AccountConfirm();
+	    $confirm->emailAddress = $emailAddress;
+	    $confirm->save();
 
-	    $confirms = new AccountConfirmsHandler();
-		$code =   $confirms->generate( $emailaddress );
+		$this->view->layout()->setLayout( 'blank' );
 
-		$view = new Zend_Layout();
-		$view->setLayout( 'blank' );
+		$this->view->assign( 'emailAddress', $confirm->emailAddress );
+		$this->view->assign( 'confirmCode',  $confirm->code );
 
-		$view->getView()->assign( 'emailAddress', $emailaddress );
-		$view->getView()->assign( 'confirmCode', $code );
+		$link = $this->_helper->url( 'confirm', 'account', 'default', array(
+		    'email' => $confirm->emailAddress,
+		    'code'  => $confirm->code
+		) );
+
+		$this->view->assign( 'link', "http://{$this->_config->hostname}/{$link}" );
 
 		$mail = new Zend_Mail();
-		$mail->addTo( $emailaddress );
-		$mail->setBodyText( $view->render( 'mail/confirm-text' ) );
-		$mail->setBodyHtml( $view->render( 'mail/confirm-html' ) );
-		$mail->setFrom( 'accounts@zendforge.org' );
-		$mail->setReturnPath( 'no-reply@zendforge.org' );
-		$mail->setSubject( 'Please Confirm Your E-Mail Address for ZendForge' );
+		$mail->addTo( $confirm->emailAddress );
+		$mail->setBodyText( $this->view->render( 'mail/confirm-text.phtml' ) );
+		$mail->setBodyHtml( $this->view->render( 'mail/confirm-html.phtml' ) );
+		$mail->setFrom( 'accounts@' . $this->_config->hostname, 'BitNotion, M.D.' );
+		$mail->setReturnPath( 'no-reply@' . $this->_config->hostname );
+		$mail->setSubject( 'BitNotion | Please Confirm Your E-Mail Address' );
 		$mail->send();
 	}
 

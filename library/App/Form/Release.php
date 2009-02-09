@@ -2,14 +2,14 @@
 
 require_once  'Zend/Dojo/Form.php';
 
-class App_Form_Login extends Zend_Dojo_Form
+class App_Form_Release extends Zend_Dojo_Form
 {
 
 	public function init()
 	{
 		parent::init();
 
-		$this->setName( 'loginForm' );
+		$this->setName( 'releaseForm' );
 		$this->setAttrib( 'id', 'release-form' );
 		$this->setMethod( 'post' );
 
@@ -18,31 +18,29 @@ class App_Form_Login extends Zend_Dojo_Form
 			'DijitForm',
 		) );
 
-
 		$this->addElement( 'ValidationTextBox', 'title',
 			array(
-				'label'		=> 'Username',
+				'label'		=> 'Release Title',
 				'required' 	=> true,
 				'trim'		=> true,
 			    'validators'	=> array(
 			        array( 'Alnum', true, array( 'allowWhiteSpace' => true ) )
-			    )
-				'filters'  => array( 'StringToLower' )
+			    ),
 			)
 		);
 
-		$this->addElement( 'PasswordTextBox', 'password',
-			array(
-				'label'		=> 'Password',
-				'required'	=> true,
-				'trim'		=> false
-			)
-		);
+		$this->addElement( 'DateTextBox', 'publishDate', array(
+				'label'		=> 'Publish Date',
+		        'description' => 'The date which this release will be available
+		        	for purchase.  Note: tracks may be available as singles
+		        	before this date.',
+		        'default'	=> date( 'm/d/Y' ),
+		) );
 
 		$this->addElement( 'SubmitButton', 'submit',
 			array(
 				'ignore'	=> true,
-				'label'		=> 'Log Me In'
+				'label'		=> 'Save Release'
 			)
 		);
 

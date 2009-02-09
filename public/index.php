@@ -11,7 +11,7 @@ require_once '../application/bootstrap.php';
 $frontController = Zend_Controller_Front::getInstance();
 
 // Change to 'production' parameter under production environemtn
-$frontController->registerPlugin( new Initializer('production') );
+$frontController->registerPlugin( new Initializer('dev') );
 
 //register_shutdown_function( 'debugQueries' );
 

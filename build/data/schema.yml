@@ -2,7 +2,7 @@ Account:
   tableName: accounts
   columns:
     username:
-      type: string(16)
+      type: string(64)
       fixed: true
       notnull: true
     password:
@@ -52,6 +52,8 @@ AccountConfirm:
       local: emailAddress
       foreign: emailAddress
       type: one
+      onDelete: CASCADE
+      onUpdate: CASCADE
       
 AccountLogin:
   tableName: accounts_logins
@@ -67,6 +69,8 @@ AccountLogin:
       local: accountId
       foreign: id
       type: one
+      onDelete: CASCADE
+      onUpdate: CASCADE
 
 Buyer:
   inheritance:
@@ -91,6 +95,11 @@ Release:
     artistId:
       notnull: true
       type: integer
+    purchases:
+      integer(10)
+      default: 0
+      notnull: true
+      unsigned: true
     published:
       type: boolean
       notnull: true
@@ -128,6 +137,11 @@ Track:
     releaseId:
       notnull: true
       type: integer(8)
+    purchases:
+      integer(10)
+      default: 0
+      notnull: true
+      unsigned: true
     published:
       notnull: true
       default: true
@@ -152,7 +166,7 @@ Track:
   actAs: [Timestampable]
   relations:
     Artist:
-      class: Seller
+      class: Artist
       local: artistId
       foreign: id
       type: one
@@ -208,6 +222,16 @@ Artist:
       local: id
       foreign: artistId
       
+PayoutType
+  tableName: payout_types
+  columns:
+    name:
+      type: string(32)
+      notblank: true
+    description:
+      type: string(255)
+  actAs: [Timestampable]	
+      
 TrackTag:
   tableName: track_tags
   columns:
@@ -223,10 +247,14 @@ TrackTag:
       local: trackId
       foreign: id
       type: one
+      onDelete: CASCADE
+      onUpdate: CASCADE
     Tag:
       local: tagId
       foreign: id
       type: one
+      onDelete: CASCADE
+      onUpdate: CASCADE
 
 TrackFile:
   tableName: track_files
@@ -266,4 +294,10 @@ Tag:
     name:
       type: string(32)
       fixed: true
-  actAs: [Timestampable]
+  actAs:
+    Timestampable:
+    Sluggable:
+      unique: true
+      fields: [title]
+      uniqueBy: [title]
+      canUpdate: false

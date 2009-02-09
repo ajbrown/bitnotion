@@ -13,10 +13,9 @@ set_include_path(
 	. PATH_SEPARATOR . ROOT . '/application/default'
 	. PATH_SEPARATOR . ROOT . '/library'
 	. PATH_SEPARATOR . ROOT . '/models'
-	. PATH_SEPARATOR . ROOT . '/models/handlers'
+	. PATH_SEPARATOR . ROOT . '/models/generated'
 	. PATH_SEPARATOR . '/usr/share/php/Zend/library'
-	. PATH_SEPARATOR . '/usr/share/php/Doctrine/lib'
-	. PATH_SEPARATOR . '/usr/share/php'
+	. PATH_SEPARATOR . '/usr/share/php/Doctrine-1.1.0-RC1/lib'
 );
 
 require_once 'Zend/Controller/Plugin/Abstract.php';
@@ -163,7 +162,6 @@ class Initializer extends Zend_Controller_Plugin_Abstract
     	//configure mail transport
     	$tr = new Zend_Mail_Transport_Sendmail( '-fno-relay@zendforge.org' );
     	Zend_Mail::setDefaultTransport( $tr );
-
     }
 
     /**
