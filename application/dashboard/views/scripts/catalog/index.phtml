@@ -1,0 +1,29 @@
+<?php $this->placeholder( 'title' )->set( 'Manage Catalog' ); ?>
+<h2>My Releases</h2>
+
+<table class="releases">
+<?php foreach( $this->releases as $release ) : ?>
+  <thead>
+    <tr>
+      <th colspan="3"><?php echo $release->title; ?></th>
+      <th><?php echo  $release->publishDate; ?></th>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <th>Encode Status</th>
+      <th>Single</th>
+      <th>Publish Date</th>
+    </tr>
+  </thead>
+  <?php foreach( $release->Track as $track ): ?>
+  <tbody>
+    <tr>
+      <td><?php echo $track->title; ?></td>
+      <td><?php echo $track->encodingStatus; ?></td>
+      <td><?php echo $track->single ? 'x' : '' ?></td>
+      <td><?php echo $track->publishDate; ?></td>
+    </tr>
+  </tbody>
+  <?php endforeach; ?>
+<?php endforeach; ?>
+</table>

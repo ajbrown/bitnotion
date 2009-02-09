@@ -1,0 +1,2 @@
+- Currently, releases, tracks, and artists can only have alphanumeric titles.  We
+  should extend this to include any printable character.
